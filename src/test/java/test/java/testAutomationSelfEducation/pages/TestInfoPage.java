@@ -12,7 +12,6 @@ public class TestInfoPage extends Form {
     public TestInfoPage() {
         super(By.xpath(""), "Time info");
     }
-
     public WebElement getInfoTimeTest(String time) {
         String fullLocator = String.format(listNames, time);
         return AqualityServices.getBrowser().getDriver().findElement(By.xpath(fullLocator)).getText().replace("");
