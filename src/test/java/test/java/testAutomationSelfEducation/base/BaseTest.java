@@ -6,15 +6,15 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import util.PathsProperties;
 
-import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public abstract class BaseTest {
 
+    private static final String default_url = PathsProperties.getProperty("default_url.path");
+
     protected Browser getBrowser() {
         return AqualityServices.getBrowser();
     }
-    private static final String default_url = PathsProperties.getProperty("default_url.path");
 
     @BeforeMethod
     protected void beforeMethod() {

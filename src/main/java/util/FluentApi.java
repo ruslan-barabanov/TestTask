@@ -1,7 +1,6 @@
 package util;
 
 import org.apache.http.NameValuePair;
-import org.apache.http.client.fluent.Content;
 import org.apache.http.client.fluent.Request;
 
 import java.io.IOException;

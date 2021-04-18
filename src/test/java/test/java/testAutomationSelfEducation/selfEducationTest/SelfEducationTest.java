@@ -30,19 +30,22 @@ public class SelfEducationTest extends BaseTest {
 
         String token = FluentApi.sendPostGetToken();
         Assert.assertNotNull(token, "token was not generated");
+        logger.info("token is =" + token);
         WorkWithCookie.setCookie("token", token);
         getBrowser().getDriver().navigate().refresh();
-        Assert.assertNotNull(WorkWithCookie.returnCookieName("token"), "cookies are not as expected");
+        logger.info("page refreshed ");
+        Assert.assertTrue(WorkWithCookie.getCookieName("token"), "cookies are not as expected");
+        logger.info("cookie added ");
         String expectedText = PathsProperties.getProperty("variant.path");
         String actualText = projectsPage.getVersionName();
         Assert.assertEquals(expectedText, actualText, "version does not match");
+        logger.info("this version matches the variant ");
         projectsPage.clickRandomProjectNames();
         String mostLongTime = randomProjectPage.getTimeText();
+        logger.info("the longest test has time " + mostLongTime);
         randomProjectPage.clickBigTimeTest(mostLongTime);
-
         String actual = testInfoPage.getInfoTimeTest();
-        System.out.println(actual);
+        logger.info("the actual test time on the information page is " + actual);
         Assert.assertEquals(mostLongTime, actual, "time does not correspond to the greatest");
-        System.out.println();
     }
 }

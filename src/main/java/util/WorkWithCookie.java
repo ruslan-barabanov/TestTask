@@ -12,4 +12,12 @@ public class WorkWithCookie {
     public static Cookie returnCookieName(String value) {
         return AqualityServices.getBrowser().getDriver().manage().getCookieNamed(value);
     }
+
+    public static boolean getCookieName(String value) {
+        if (returnCookieName(value) != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
