@@ -8,4 +8,8 @@ public class WorkWithCookie {
     public static void setCookie(String name, String value) {
         AqualityServices.getBrowser().getDriver().manage().addCookie(new Cookie(name, value));
     }
+
+    public static Cookie returnCookieName(String value) {
+        return AqualityServices.getBrowser().getDriver().manage().getCookieNamed(value);
+    }
 }

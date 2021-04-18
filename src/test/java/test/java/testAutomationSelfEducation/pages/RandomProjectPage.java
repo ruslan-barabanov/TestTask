@@ -12,10 +12,10 @@ import java.util.List;
 public class RandomProjectPage extends Form {
 
     private final String listTime = "//table[@class='table']/tbody/tr/td[6]";
-    private final String bigTimeNameTest = "//table[@class='table']/tbody/tr/td[6][contains(text(),'%s')]/parent::td[1]/a";
+    private final String bigTimeNameTest = "//table[@class='table']/tbody/tr/td[6][contains(text(),'%s')]/parent::tr//td[1]/a";
 
-    public RandomProjectPage(By locator, String name) {
-        super(locator, name);
+    public RandomProjectPage() {
+        super(By.xpath("//div[contains(@class,'main-container')]"), "RandomProject Page");
     }
 
     private List<WebElement> getListProjectNames() {
@@ -25,7 +25,7 @@ public class RandomProjectPage extends Form {
     public String getTimeText() {
         List<WebElement> webElementList = getListProjectNames();
         ArrayList<String> str = new ArrayList();
-        webElementList.forEach(element-> str.add(element.getText()));
+        webElementList.forEach(element -> str.add(element.getText()));
         Collections.sort(str);
         return str.get(str.size() - 1);
     }

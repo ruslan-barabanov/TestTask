@@ -19,9 +19,8 @@ public class ProjectsPage extends Form {
         super(By.xpath("//div[contains(@class,'main-container')]"), "Project Page");
     }
 
-    public IElement getVersionName() {
-
-        return versionName.getText();
+    public String getVersionName() {
+        return versionName.getText().replace("Version: ", "");
     }
 
     private List<WebElement> getListProjectNames() {
@@ -31,6 +30,16 @@ public class ProjectsPage extends Form {
     public void clickRandomProjectNames() {
         List<WebElement> webElementList = getListProjectNames();
         Random ran = new Random();
-        webElementList.get(ran.nextInt(webElementList.size())).click();
+//        webElementList.get(ran.nextInt(webElementList.size())).click();        Random ran = new Random();
+//        int x = ran.nextInt(4);
+        int x =4;
+        int counter = 0;
+        for (WebElement element : webElementList) {
+            if (counter == x) {
+                element.click();
+                break;
+            }
+            counter++;
+        }
     }
 }

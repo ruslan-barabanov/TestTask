@@ -8,19 +8,23 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Properties;
 
 public class FluentApi {
 
-    private static final Properties properties = PathsProperties.readFile();
-    private static final String requestPost = properties.getProperty("requestPost.path");
+    private static final String requestPost = PathsProperties.getProperty("requestPost.path");
+    private static final String myVariant = PathsProperties.getProperty("variant.path");
 
-    public static String sendPostGetToken() throws IOException {
-        int myVariant = 4;
+    public static String sendPostGetToken() {
         Collection<NameValuePair> params = new ArrayList<>();
-
-        return Request.Post(requestPost + myVariant)
+        String request = null;
+        try {
+            request = Request.Post(requestPost + myVariant)
                     .bodyForm(params, Charset.defaultCharset())
                     .execute().returnContent().asString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return request;
     }
 }
+

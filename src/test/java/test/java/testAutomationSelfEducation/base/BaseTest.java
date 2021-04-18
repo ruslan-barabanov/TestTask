@@ -14,9 +14,7 @@ public abstract class BaseTest {
     protected Browser getBrowser() {
         return AqualityServices.getBrowser();
     }
-
-    private final Properties properties = PathsProperties.readFile();
-    private final String default_url = properties.getProperty("default_url.path");
+    private static final String default_url = PathsProperties.getProperty("default_url.path");
 
     @BeforeMethod
     protected void beforeMethod() {
