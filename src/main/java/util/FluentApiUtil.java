@@ -8,15 +8,15 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class FluentApi {
+public class FluentApiUtil {
 
-    private static final String REQUESTPOST = PathsProperties.getProperty("requestPost.path");
+    private static final String REQUEST_POST = PathsPropertiesUtil.getProperty("requestPost.path");
 
-    public static String sendPostGetToken(String variant) {
+    public static String sendPostGetToken(String endpoint, String variant) {
         Collection<NameValuePair> params = new ArrayList<>();
         String request = null;
         try {
-            request = Request.Post(REQUESTPOST + variant)
+            request = Request.Post(REQUEST_POST + endpoint + variant)
                     .bodyForm(params, Charset.defaultCharset())
                     .execute().returnContent().asString();
         } catch (IOException e) {

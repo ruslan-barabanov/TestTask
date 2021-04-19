@@ -1,8 +1,9 @@
 package test.java.testAutomationSelfEducation.pages;
 
-import aquality.selenium.browser.AqualityServices;
 import aquality.selenium.forms.Form;
 import org.openqa.selenium.By;
+
+import static aquality.selenium.browser.AqualityServices.getBrowser;
 
 public class TestInfoPage extends Form {
 
@@ -13,7 +14,7 @@ public class TestInfoPage extends Form {
     }
 
     public String getInfoTimeTest() {
-        String str = AqualityServices.getBrowser().getDriver().findElement(By.xpath(listNames)).getText();
+        String str = getBrowser().getDriver().findElement(By.xpath(listNames)).getText();
         return str.replace("Duration (H:m:s.S): ", "");
     }
 }

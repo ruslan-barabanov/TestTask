@@ -1,6 +1,5 @@
 package test.java.testAutomationSelfEducation.pages;
 
-import aquality.selenium.browser.AqualityServices;
 import aquality.selenium.elements.interfaces.ITextBox;
 import aquality.selenium.forms.Form;
 import org.openqa.selenium.By;
@@ -8,6 +7,8 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 import java.util.Random;
+
+import static aquality.selenium.browser.AqualityServices.getBrowser;
 
 public class ProjectsPage extends Form {
 
@@ -23,7 +24,7 @@ public class ProjectsPage extends Form {
     }
 
     private List<WebElement> getListProjectNames() {
-        return AqualityServices.getBrowser().getDriver().findElements(By.xpath(listNames));
+        return getBrowser().getDriver().findElements(By.xpath(listNames));
     }
 
     public void clickRandomProjectNames() {
