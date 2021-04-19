@@ -1,16 +1,12 @@
 package test.java.testAutomationSelfEducation.selfEducationTest;
 
-import aquality.selenium.browser.AqualityServices;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import test.java.testAutomationSelfEducation.base.BaseTest;
 import test.java.testAutomationSelfEducation.pages.ProjectsPage;
 import test.java.testAutomationSelfEducation.pages.RandomProjectPage;
 import test.java.testAutomationSelfEducation.pages.TestInfoPage;
-import util.FluentApi;
-import util.MyLogger;
-import util.PathsProperties;
-import util.WorkWithCookie;
+import util.*;
 
 public class FindTheLongestTimeTest extends BaseTest {
 
@@ -28,22 +24,22 @@ public class FindTheLongestTimeTest extends BaseTest {
     public void findTheLongestTimeTest() {
         String token = FluentApi.sendPostGetToken(PathsProperties.getProperty("variant.path"));
         Assert.assertNotNull(token, "token was not generated");
-        AqualityServices.getLogger().info("token is =" + token);
+        MyLog.getLoggerInfo("token is =" + token);
         WorkWithCookie.setCookie("token", token);
         getBrowser().getDriver().navigate().refresh();
-        AqualityServices.getLogger().info("page refreshed ");
+        MyLog.getLoggerInfo("page refreshed ");
         Assert.assertTrue(WorkWithCookie.isCookieExist("token"), "cookies are not as expected");
-        AqualityServices.getLogger().info("cookie added ");
+        MyLog.getLoggerInfo("cookie added ");
         String expectedText = PathsProperties.getProperty("variant.path");
         String actualText = projectsPage.getVersionName();
         Assert.assertEquals(expectedText, actualText, "version does not match ");
-        AqualityServices.getLogger().info("this version matches the variant " + actualText);
+        MyLog.getLoggerInfo("this version matches the variant " + actualText);
         projectsPage.clickRandomProjectNames();
         String mostLongTime = randomProjectPage.getTimeText();
-        AqualityServices.getLogger().info("the longest test has time " + mostLongTime);
+        MyLog.getLoggerInfo("the longest test has time " + mostLongTime);
         randomProjectPage.clickBigTimeTest(mostLongTime);
         String actual = testInfoPage.getInfoTimeTest();
-        AqualityServices.getLogger().info("the actual test time on the information page is " + actual);
+        MyLog.getLoggerInfo("the actual test time on the information page is " + actual);
         Assert.assertEquals(mostLongTime, actual, "time does not correspond to the greatest");
     }
 }
