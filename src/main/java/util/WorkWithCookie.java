@@ -14,10 +14,6 @@ public class WorkWithCookie {
     }
 
     public static boolean getCookieName(String value) {
-        if (returnCookieName(value) != null) {
-            return true;
-        } else {
-            return false;
-        }
+        return returnCookieName(value) != null;
     }
 }
