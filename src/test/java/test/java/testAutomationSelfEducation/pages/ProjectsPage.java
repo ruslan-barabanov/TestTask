@@ -32,4 +32,5 @@ public class ProjectsPage extends Form {
         Random ran = new Random();
         webElementList.get(ran.nextInt(webElementList.size())).click();
     }
+
 }
