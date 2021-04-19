@@ -38,7 +38,7 @@ public class SelfEducationTest extends BaseTest {
         logger.info("cookie added ");
         String expectedText = PathsProperties.getProperty("variant.path");
         String actualText = projectsPage.getVersionName();
-        Assert.assertEquals(expectedText, actualText, "version does not match");
+        Assert.assertEquals(expectedText, actualText, "version does not match ");
         logger.info("this version matches the variant " + actualText);
         projectsPage.clickRandomProjectNames();
         String mostLongTime = randomProjectPage.getTimeText();
