@@ -4,6 +4,7 @@ import aquality.selenium.browser.AqualityServices;
 import aquality.selenium.browser.Browser;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import util.ConstantWaiters;
 import util.PathsProperties;
 
 import java.util.concurrent.TimeUnit;
@@ -20,7 +21,7 @@ public abstract class BaseTest {
     protected void beforeMethod() {
         AqualityServices.getBrowser().goTo(DEFAULT_URL);
         getBrowser().maximize();
-        AqualityServices.getBrowser().getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        AqualityServices.getBrowser().getDriver().manage().timeouts().implicitlyWait(ConstantWaiters.getTimeout30(), TimeUnit.SECONDS);
     }
 
     @AfterMethod

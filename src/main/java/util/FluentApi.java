@@ -11,13 +11,12 @@ import java.util.Collection;
 public class FluentApi {
 
     private static final String REQUESTPOST = PathsProperties.getProperty("requestPost.path");
-    private static final String MY_VARIANT = PathsProperties.getProperty("variant.path");
 
-    public static String sendPostGetToken() {
+    public static String sendPostGetToken(String variant) {
         Collection<NameValuePair> params = new ArrayList<>();
         String request = null;
         try {
-            request = Request.Post(REQUESTPOST + MY_VARIANT)
+            request = Request.Post(REQUESTPOST + variant)
                     .bodyForm(params, Charset.defaultCharset())
                     .execute().returnContent().asString();
         } catch (IOException e) {

@@ -13,7 +13,7 @@ public class WorkWithCookie {
         return AqualityServices.getBrowser().getDriver().manage().getCookieNamed(value);
     }
 
-    public static boolean getCookieName(String value) {
+    public static boolean isCookieExist(String value) {
         return returnCookieName(value) != null;
     }
 }
