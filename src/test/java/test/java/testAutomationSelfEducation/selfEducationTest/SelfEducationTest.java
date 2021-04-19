@@ -39,7 +39,7 @@ public class SelfEducationTest extends BaseTest {
         String expectedText = PathsProperties.getProperty("variant.path");
         String actualText = projectsPage.getVersionName();
         Assert.assertEquals(expectedText, actualText, "version does not match");
-        logger.info("this version matches the variant ");
+        logger.info("this version matches the variant " + actualText);
         projectsPage.clickRandomProjectNames();
         String mostLongTime = randomProjectPage.getTimeText();
         logger.info("the longest test has time " + mostLongTime);
