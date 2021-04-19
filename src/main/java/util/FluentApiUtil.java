@@ -1,6 +1,7 @@
 package util;
 
 import org.apache.http.NameValuePair;
+import org.apache.http.client.fluent.Content;
 import org.apache.http.client.fluent.Request;
 
 import java.io.IOException;
@@ -8,18 +9,17 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class FluentApi {
+public class FluentApiUtil {
 
-    private static final String requestPost = PathsProperties.getProperty("requestPost.path");
-    private static final String myVariant = PathsProperties.getProperty("variant.path");
+    private static final String REQUEST_POST = PathsPropertiesUtil.getProperty("requestPost.path");
 
-    public static String sendPostGetToken() {
+    public static Content sendPostGetToken(String endpoint, String variant) {
         Collection<NameValuePair> params = new ArrayList<>();
-        String request = null;
+        Content request = null;
         try {
-            request = Request.Post(requestPost + myVariant)
+            request = Request.Post(REQUEST_POST + endpoint + variant)
                     .bodyForm(params, Charset.defaultCharset())
-                    .execute().returnContent().asString();
+                    .execute().returnContent();
         } catch (IOException e) {
             e.printStackTrace();
         }
