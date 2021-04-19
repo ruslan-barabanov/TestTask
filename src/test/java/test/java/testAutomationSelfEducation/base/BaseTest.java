@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class BaseTest {
 
-    private static final String default_url = PathsProperties.getProperty("default_url.path");
+    private static final String DEFAULT_URL = PathsProperties.getProperty("default_url.path");
 
     protected Browser getBrowser() {
         return AqualityServices.getBrowser();
@@ -18,7 +18,7 @@ public abstract class BaseTest {
 
     @BeforeMethod
     protected void beforeMethod() {
-        AqualityServices.getBrowser().goTo(default_url);
+        AqualityServices.getBrowser().goTo(DEFAULT_URL);
         getBrowser().maximize();
         AqualityServices.getBrowser().getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }

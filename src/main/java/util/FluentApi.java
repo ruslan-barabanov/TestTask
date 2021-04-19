@@ -10,14 +10,14 @@ import java.util.Collection;
 
 public class FluentApi {
 
-    private static final String requestPost = PathsProperties.getProperty("requestPost.path");
-    private static final String myVariant = PathsProperties.getProperty("variant.path");
+    private static final String REQUESTPOST = PathsProperties.getProperty("requestPost.path");
+    private static final String MY_VARIANT = PathsProperties.getProperty("variant.path");
 
     public static String sendPostGetToken() {
         Collection<NameValuePair> params = new ArrayList<>();
         String request = null;
         try {
-            request = Request.Post(requestPost + myVariant)
+            request = Request.Post(REQUESTPOST + MY_VARIANT)
                     .bodyForm(params, Charset.defaultCharset())
                     .execute().returnContent().asString();
         } catch (IOException e) {

@@ -11,18 +11,18 @@ import util.MyLogger;
 import util.PathsProperties;
 import util.WorkWithCookie;
 
-public class SelfEducationTest extends BaseTest {
+public class FindTheLongestTimeTest extends BaseTest {
 
     private final ProjectsPage projectsPage;
     private final RandomProjectPage randomProjectPage;
     private final TestInfoPage testInfoPage;
     private MyLogger logger;
 
-    public SelfEducationTest() {
+    public FindTheLongestTimeTest() {
         testInfoPage = new TestInfoPage();
         randomProjectPage = new RandomProjectPage();
         projectsPage = new ProjectsPage();
-        logger = MyLogger.getLogger(SelfEducationTest.class);
+        logger = MyLogger.getLogger(FindTheLongestTimeTest.class);
     }
 
     @Test()
