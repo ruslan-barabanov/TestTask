@@ -26,8 +26,7 @@ public class FindTheLongestTimeTest extends BaseTest {
     }
 
     @Test()
-    public void mainSelfAducationTest() {
-
+    public void findTheLongestTimeTest() {
         String token = FluentApi.sendPostGetToken();
         Assert.assertNotNull(token, "token was not generated");
         logger.info("token is =" + token);
